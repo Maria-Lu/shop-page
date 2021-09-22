@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~/assets/fonts/sourceSansPro-regular.woff') format('woff'),
+    url('~/assets/fonts/sourceSansPro-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('~/assets/fonts/sourceSansPro-semiBold.woff') format('woff'),
+    url('~/assets/fonts/sourceSansPro-semiBold.woff2') format('woff2');
+}
