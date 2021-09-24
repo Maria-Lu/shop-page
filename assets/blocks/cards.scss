@@ -1,0 +1,19 @@
+.cards {
+  width: calc(100% - 332px - 16px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-left: auto;
+
+  @media (max-width: $screen-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $screen-md) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: $screen-sm) {
+    width: 100%;
+  }
+}

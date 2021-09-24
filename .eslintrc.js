@@ -18,12 +18,14 @@ module.exports = {
   },
   plugins: ['vue'],
   rules: {
-    'max-len': ['error', { code: 100 }],
+    'max-len': ['error', { code: 100, ignoreUrls: true, ignoreStrings: true }],
     'vue/max-len': [
       'error',
       {
         code: 100,
         template: 80,
+        ignoreUrls: true,
+        ignoreStrings: true,
       },
     ],
   },

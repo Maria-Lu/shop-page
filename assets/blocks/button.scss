@@ -1,0 +1,13 @@
+.button {
+  outline: none;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover:not([disabled='disabled']),
+  &:focus {
+    border: double #fff;
+  }
+}
