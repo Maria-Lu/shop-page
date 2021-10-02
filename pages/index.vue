@@ -132,7 +132,8 @@ export default {
           if (nameA > nameB) return 1;
           return 0;
         });
-      } return this.cards;
+      }
+      return this.cards;
     },
   },
   methods: {

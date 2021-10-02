@@ -92,6 +92,8 @@
     color: $color-danger;
     transition: all 0.3s ease-in;
     margin: 4px 0 2px;
+    display: block;
+    min-height: 10px;
   }
 
   &__error_visible {

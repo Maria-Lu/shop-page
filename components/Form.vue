@@ -20,7 +20,7 @@
       @blur="isTitleTouched=true"
     >
     <span :class="['form__error', {'form__error_visible': isTitleError}]">
-      {{ error }}
+      {{ setTitleErrors }}
     </span>
     <label
       class="form__label"
@@ -47,7 +47,7 @@
       @blur="isImageTouched=true"
     >
     <span :class="['form__error', {'form__error_visible': isImageError}]">
-      {{ error }}
+      {{ setImageErrors }}
     </span>
     <label
       class="form__label form__label_required"
@@ -64,7 +64,7 @@
       @focus="card.price = unformattedPrice"
     >
     <span :class="['form__error', {'form__error_visible': isPriceError}]">
-      {{ error }}
+      {{ setPriceErrors }}
     </span>
     <button
       :class="['button', 'form__button', {'form__button_disabled': !isFormValid}]"
@@ -92,7 +92,12 @@ export default {
       isTitleTouched: false,
       isImageTouched: false,
       isPriceTouched: false,
-      error: 'Поле является обязательным',
+      errors: {
+        empty: 'Поле является обязательным',
+        title: 'Введите 3—50 допустимых символов (буквы, цифры, дефис, пробел)',
+        image: 'Введите URL',
+        price: 'Введите цифры',
+      },
     };
   },
   computed: {
@@ -103,7 +108,7 @@ export default {
       return this.card.price.replace(/\s/g, '');
     },
     isTitleValid() {
-      return this.card.title.length > 0;
+      return /^[А-Яа-яёЁa-zA-Z0-9 -]{3,50}$/.test(this.card.title);
     },
     isImageValid() {
       return /^(https?:\/\/)?([\w-]+\.[\w-]+)\S*$/.test(this.card.image);
@@ -122,6 +127,33 @@ export default {
     },
     isFormValid() {
       return this.isTitleValid && this.isImageValid && this.isPriceValid;
+    },
+    setTitleErrors() {
+      if (!this.card.title.length && this.isTitleTouched) {
+        return this.errors.empty;
+      }
+      if (this.isTitleError) {
+        return this.errors.title;
+      }
+      return null;
+    },
+    setImageErrors() {
+      if (!this.card.image.length && this.isImageTouched) {
+        return this.errors.empty;
+      }
+      if (this.isImageError) {
+        return this.errors.image;
+      }
+      return null;
+    },
+    setPriceErrors() {
+      if (!this.card.price.length && this.isPriceTouched) {
+        return this.errors.empty;
+      }
+      if (this.isPriceError) {
+        return this.errors.price;
+      }
+      return null;
     },
   },
   methods: {
@@ -144,7 +176,6 @@ export default {
         this.isPriceTouched = false;
       }
     },
-
   },
 };
 </script>
